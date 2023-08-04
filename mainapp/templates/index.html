@@ -1,0 +1,82 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
+    {% block title %}
+    <title>CRUD</title>
+    {% endblock %}
+</head>
+
+<body>
+    <nav class="navbar navbar-expand-lg bg-success stick-top">
+        <div class="container-fluid">
+            <a class="navbar-brand text-light" href="/">CRUD</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
+                aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    <li class="nav-item">
+                        <a class="nav-link active text-light" aria-current="page" href="/">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link text-light" href="/add/">Add</a>
+                    </li>
+                </ul>
+                <form class="d-flex" method="post" action="/search/" role="search">
+                    {% csrf_token %}
+                    <input class="form-control me-2" name="search" type="search" placeholder="Search" aria-label="Search">
+                    <button class="btn btn-outline-light" type="submit">Search</button>
+                </form>
+            </div>
+        </div>
+    </nav>
+    {% block body %}
+    <h5 class="mt-2 bg-success text-centre p-2 text-light">Employee</h5>
+    <div class="table-responsive">
+        <table class="table table-bordered table-success table-striped table-hover">
+            <tr>
+                <th>id</th>
+                <th>Name</th>
+                <th>Email</th>
+                <th>Phone</th>
+                <th>Desination</th>
+                <th>Salary</th>
+                <th>City</th>
+                <th>State</th>
+                <th></th>
+            </tr>
+            {% for item in data %}
+            <tr>
+                <td>{{item.id}}</td>
+                <td>{{item.name}}</td>
+                <td>{{item.email}}</td>
+                <td>{{item.phone}}</td>
+                <td>{{item.dsg}}</td>
+                <td>{{item.salary}}</td>
+                <td>{{item.city}}</td>
+                <td>{{item.state}}</td>
+                <td<a href="/update/" {{item.id}}><span class="material-symbols-outlined"></span></a></td>
+                <td<a href="/delete/" {{item.id}}><span class="material-symbols-outlined"></span></a></td>
+            </tr>
+            {% endfor %}
+        </table>
+    </div>
+    {% endblock %}
+    <footer class="bg-success text-centre text-light p-1 fixed-bottom">
+        <p>copyright@crudapp.com</p>
+    </footer>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz"
+        crossorigin="anonymous"></script>
+</body>
+
+</html>

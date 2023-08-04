@@ -1,0 +1,57 @@
+{% extends 'index.html' %}
+{% load static %}
+{% block title %}
+<title>Document</title>
+{% endblock %}
+{% block body %}
+<div class="container-fluid my-3">
+    <h5 class="bg-success text-centre text-light p-2">update Employee Record</h5>
+    <div class="card p-5">
+        <form action="" method="post">
+            {% csrf_token %}
+            <div class="mb-3">
+                <label>name</label>
+                <input type="text" name="name" value="{{data.name}}" required placeholder="Enter full name : " class="form-control">
+            </div>
+            <div class="row mb-3">
+                <div class="col-md-6">
+                    <lable>Email</lable>
+                    <input type="text" name="Email" value="{{data.email}}" required placeholder="Enter your Email" : class="form-control">
+                </div>
+                <div class="col-md-6">
+                    <lable>phone</lable>
+                    <input type="text" name="phone" value="{{data.phone}}" required placeholder="Enter your phone num" : class="form-control">
+                </div>
+            </div>
+            <div class="row mb-3">
+                <div class="col-md-6">
+                    <lable>desination</lable>
+                    <input type="text" name="dsg" value="{{data.dsg}}" required placeholder="Enter your dsg" : class="form-control">
+                </div>
+                <div class="col-md-6">
+                    <lable>salary</lable>
+                    <input type="text" name="salary" value="{{data.salary}}"required placeholder="Enter your salary" : class="form-control">
+                </div>
+            </div>
+            <div>
+                <div class="row mb-3">
+                    <div class="col-md-6">
+                        <lable>city</lable>
+                        <input type="text" name="city" value="{{data.city}}" placeholder="Enter your city" : class="form-control">
+                    </div>
+                    <div class="col-md-6">
+                        <lable>state</lable>
+                        <input type="text" name="state" value="{{data.state}}" placeholder="Enter your state" : class="form-control">
+                    </div>
+                    <div class="row mb-3">
+                        <div class="col-6">
+                            <button type="reset" class="btn btn-danger w-100-sm">Reset</button>
+                        </div>
+                        <div class="col-6">
+                            <button type="submit" class="btn btn-success w-100-sm">submit</button>
+                        </div>
+                    </div>
+        </form>
+    </div>
+</div>
+{% endblock %}
